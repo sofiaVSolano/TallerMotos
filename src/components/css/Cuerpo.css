@@ -1,0 +1,165 @@
+.tarjetas-precio {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    padding: 40px;
+    background: #242424;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-left: 12 0px;
+    margin-top: 120px;
+
+}
+
+.flotar {
+
+    animation: flotar 5s infinite ease-in-out;
+}
+
+@keyframes flotar {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+
+}
+
+.tarjeta-precio {
+    background: #fff;
+    border-radius: 12px;
+    padding: 25px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.tarjeta-precio:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+.tarjeta-img-circulo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 15px;
+}
+
+.tarjeta-img-circulo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+h3 {
+    font-size: 1.3rem;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.subtitulo {
+    font-size: 0.9rem;
+    color: #777;
+    margin-bottom: 15px;
+}
+
+.precio {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #28a745;
+}
+
+.moneda {
+    font-size: 1.2rem;
+}
+
+.periodo {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.precio-regular {
+    text-decoration: line-through;
+    color: #aaa;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.lista-incluye {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    margin-top: 10px;
+}
+
+.lista-incluye li {
+    font-size: 0.95rem;
+    color: #444;
+    margin-bottom: 8px;
+}
+
+/* Formulario */
+
+.formulario-contenedor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    width: 100%;
+
+}
+
+.formulario h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #ffffff;
+}
+
+.formulario label {
+    display: block;
+    margin-bottom: 0.3rem;
+    font-weight: bold;
+    color: #cfcfcf;
+
+}
+
+.formulario input,
+.formulario textarea,
+.formulario select {
+    width: 100%;
+    padding: 0.7rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    box-shadow: 1px 2px 5px rgba(122, 235, 22, 0.59);
+
+}
+
+.formulario button {
+    width: 100%;
+    padding: 0.8rem;
+    border: none;
+    background: #28a745;
+    color: #fff;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 1px 2px 5px rgba(28, 230, 35, 0.59);
+
+}
+
+.formulario button:hover {
+    background: #2a941e;
+    box-shadow: 1px 2px 7px rgba(144, 255, 125, 0.886);
+
+
+}

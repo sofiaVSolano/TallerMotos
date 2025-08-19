@@ -1,0 +1,46 @@
+.footer {
+  display: flex;
+  background: linear-gradient(135deg, #242424, #242424  );
+  color: #fff;
+  padding: 2rem 0;
+  font-family: 'Poppins', sans-serif;
+  width: 100%;
+}
+
+.footer-content {
+  margin-left: 40px;
+  margin-right: 40px;
+  display: flex;
+  justify-content: space-between; 
+  align-items: center; 
+}
+
+
+.footer__light {
+  font-weight: lighter;
+  color: #ff3a3a;
+}
+
+.footer__title{
+  font-size: 1.5rem;
+}
+.footer__text {
+  margin-top: 0.5rem;
+  font-size: 0-6rem;
+  color: #ccc;
+  margin-right: 720px;
+}
+
+.footer-right {
+  font-size: 0.9rem;
+  color: #bbb;
+  margin-bottom: 20px;
+  align-items: end;
+  justify-content: flex-end;
+  
+}
+
+.footer__author {
+  color: #45eb64;
+  font-weight: bold;  
+}
