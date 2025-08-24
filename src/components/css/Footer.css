@@ -1,18 +1,19 @@
 .footer {
   display: flex;
-  background: linear-gradient(135deg, #242424, #242424  );
+  background: linear-gradient(135deg, #242424, #242424);
   color: #fff;
   padding: 2rem 0;
   font-family: 'Poppins', sans-serif;
   width: 100%;
+
 }
 
 .footer-content {
   margin-left: 40px;
   margin-right: 40px;
   display: flex;
-  justify-content: space-between; 
-  align-items: center; 
+  justify-content: space-between;
+  align-items: center;
 }
 
 
@@ -21,9 +22,10 @@
   color: #ff3a3a;
 }
 
-.footer__title{
+.footer__title {
   font-size: 1.5rem;
 }
+
 .footer__text {
   margin-top: 0.5rem;
   font-size: 0-6rem;
@@ -37,10 +39,24 @@
   margin-bottom: 20px;
   align-items: end;
   justify-content: flex-end;
-  
+
 }
 
 .footer__author {
   color: #45eb64;
-  font-weight: bold;  
+  font-weight: bold;
+}
+
+/* Tema claro usando data-theme */
+[data-theme="ligth"] .footer {
+  background: linear-gradient(135deg, #ffffff, #ffffff);
+  color: #213547;
+}
+
+[data-theme="ligth"] .footer__text {
+  color: #555;
+}
+
+[data-theme="ligth"] .footer__author {
+  color: #28a745;
 }

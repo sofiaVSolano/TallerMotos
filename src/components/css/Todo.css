@@ -1,0 +1,97 @@
+:root {
+    --bg: #f8fafc;
+    --fg: #0f172a;
+    --card: #ffffff;
+    --muted: #475569;
+    --accent: #4f46e5;
+    --border: #e2e8f0;
+
+    --card-text: #000;
+    --card-button-bg: #333;
+    --card-button-text: #fff;
+}
+
+:root[data-theme='dark'] {
+    --bg: #0b1220;
+    --fg: #e5e7eb;
+    --card: #111827;
+    --muted: #94a3b8;
+    --accent: #6366f1;
+    --border: #1f2937;
+
+    --card-text: #fff;
+    --card-button-bg: #ddd;
+    --card-button-text: #000;
+
+}
+
+html,
+body,
+#root {
+    height: 100%;
+}
+
+h2 {
+    display: flex;
+    margin-top: 80px;
+    align-items: center;
+    justify-content: center;
+    margin-left: 80px;
+}
+
+.agregar__tareas {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 100px;
+}
+
+
+.lista__tareas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.borrar__tareas {
+    margin-left: 20px;
+    font-size: 14px;
+}
+
+.pendientes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 115px;
+}
+
+body {
+    background: var(--bg);
+    color: var(--fg);
+    margin: 0;
+    font-family: system-ui, Arial, sans-serif;
+}
+
+button {
+    border: 2px solid green;
+    background: var(--card);
+    color: var(--fg);
+    padding: .55rem .9rem;
+    border-radius: .6rem;
+    cursor: pointer;
+}
+
+input {
+    background: var(--card);
+    color: var(--fg);
+    border: 1px solid var(--border);
+    padding: .55rem .7rem;
+    border-radius: .5rem;
+}
+
+.main-content {
+    padding: 1.25rem;
+    display: grid;
+    gap: 1rem;
+}

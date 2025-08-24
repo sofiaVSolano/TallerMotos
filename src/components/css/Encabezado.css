@@ -75,23 +75,18 @@
   object-fit: cover;
   cursor: pointer;
   border: solid #45eb64;
-
 }
 
 .header__usuario-img:hover {
   border: solid #ff3a3a;
   transition: all 1s ease;
-
-
 }
-
 
 body {
   margin-top: 80px;
 }
 
 /* Cerrar sesion */
-
 .header__logout-btn {
   background-color: transparent;
   color: #45eb64;
@@ -99,15 +94,68 @@ body {
   padding: 4px 2px;
   border-radius: 6px;
   cursor: pointer;
+  border: none;
 }
 
 .header__logout-btn:hover {
-
   color: #ff3a3a;
   border: 2px solid #ff3a3a;
   padding: 4px 8px;
   border-radius: 6px;
   background-color: rgba(255, 58, 58, 0.1);
   transition: all 0.3s ease-in-out;
+}
 
+
+.header__tema-btn {
+  color: #45eb64;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 20px;
+  border-radius: 6px;
+  margin-left: 25px;
+}
+
+.header__tema-btn:hover {
+  border: 2px solid #ff3a3a;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Tema claro usando data-theme */
+[data-theme="ligth"] .header {
+  background-color: #f9f9f9;
+
+}
+
+[data-theme="ligth"] .header__title {
+  color: #213547;
+}
+
+[data-theme="ligth"] .header__link {
+  color: #28a745;
+}
+
+[data-theme="ligth"] .header__link:hover {
+  color: #ff3a3a;
+  border-color: #ff3a3a;
+  background-color: rgba(255, 58, 58, 0.07);
+}
+
+[data-theme="ligth"] .header__usuario-img {
+  border: solid #28a745;
+}
+
+[data-theme="ligth"] .header__logout-btn {
+  color: #28a745;
+  background-color: transparent;
+  border: none;
+
+}
+
+[data-theme="ligth"] .header__logout-btn:hover {
+  color: #ff3a3a;
+  border-color: #ff3a3a;
+  background-color: rgba(255, 58, 58, 0.07)
 }

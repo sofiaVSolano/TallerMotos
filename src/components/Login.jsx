@@ -1,37 +1,48 @@
 import { useState } from "react";
 
 export default function Login({ onlogin }) {
-
     const [usuario, setUsuario] = useState("");
     const [clave, setClave] = useState("");
     const [mensaje, setMensaje] = useState("");
-    const [registrando, setRegistrando] = useState("");
+    const [registrando, setRegistrando] = useState(false);
 
     const handleSubmit = (e) => {
-
         e.preventDefault();
 
-        //Registrar Usuario
+        // Registrar varios usuario
         if (registrando) {
+            const usuarios = JSON.parse(localStorage.getItem("usuarios") || "[]");
 
-            localStorage.setItem("usuario", JSON.stringify({ usuario, clave }));
-            setMensaje("Usuario Registrado. Ya puedes iniciar");
+            const existe = usuarios.find(u => u.usuario === usuario);
+            if (existe) {
+                setMensaje("El usuario ya existe. Elige otro");
+                return;
+            }
+
+            // Guardar varios usuarios
+            usuarios.push({ usuario, clave });
+            localStorage.setItem("usuarios", JSON.stringify(usuarios));
+
+            setMensaje("Usuario Registrado. Ya puedes iniciar sesión");
             setRegistrando(false);
             setClave("");
             return;
         }
 
-        const datos = JSON.parse(localStorage.getItem("usuario") || null);
-        if (datos && datos.usuario === usuario && datos.clave === clave) {
-            localStorage.setItem("sesion", "activa");
-            setMensaje("Bienvenido" + usuario);
+        // Iniciar sesión
+        const usuarios = JSON.parse(localStorage.getItem("usuarios") || "[]");
 
+        const datos = usuarios.find(u => u.usuario === usuario && u.clave === clave);
+
+        if (datos) {
+            localStorage.setItem("sesion", "activa");
+            localStorage.setItem("usuario", JSON.stringify(datos));
+            setMensaje("Bienvenido " + datos.usuario);
             onlogin?.();
-        }
-        else {
+        } else {
             setMensaje("Usuario o contraseña incorrecto");
         }
-    }
+    };
 
     return (
         <div style={{
@@ -45,7 +56,8 @@ export default function Login({ onlogin }) {
                 <form onSubmit={handleSubmit}>
 
                     <div>
-                        <input type="text"
+                        <input
+                            type="text"
                             placeholder="Usuario"
                             value={usuario}
                             onChange={(e) => setUsuario(e.target.value)}
@@ -55,7 +67,8 @@ export default function Login({ onlogin }) {
                     </div>
 
                     <div>
-                        <input type="password"
+                        <input
+                            type="password"
                             placeholder="Contraseña"
                             value={clave}
                             onChange={(e) => setClave(e.target.value)}
@@ -65,19 +78,19 @@ export default function Login({ onlogin }) {
                     </div>
 
                     <button type="submit" style={{ textAlign: "center", marginTop: "10px", padding: "8px 20px", fontFamily: "Arial" }}>
-
-                        {registrando ? "Registrar" : "Iniciar Sesion "}
+                        {registrando ? "Registrar" : "Iniciar Sesión"}
                     </button>
-
                 </form>
-                <button onClick={() => { setRegistrando(!registrando); setMensaje(""); }} style={{ marginTop: "10px" }}>
-                    {registrando ? "Ya esta registrado" : "Crear nueva Cuenta"}
+
+                <button
+                    onClick={() => { setRegistrando(!registrando); setMensaje(""); }}
+                    style={{ marginTop: "10px" }}
+                >
+                    {registrando ? "Ya está registrado" : "Crear nueva Cuenta"}
                 </button>
 
+                {mensaje && <p>{mensaje}</p>}
             </div>
         </div>
-
-    )
-
+    );
 }
-
