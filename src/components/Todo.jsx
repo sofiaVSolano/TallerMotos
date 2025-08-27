@@ -9,9 +9,11 @@ export default function Todo({ user }) {
 
     const [items, setItems] = useState([]);
     const [text, setText] = useState("");
-    const [isLoaded, setIsLoaded] = useState(false); //Agrego el nuevo estado para las tareas
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [filter, setFilter] = useState('all');
+    const [editID, setEditID] = useState(null);
+    const [editTxt, setEditTxt] = useState("");
 
-    // Se carga solo si hay un usuario disponible
     useEffect(() => {
         if (!storageKey) {
             setItems([]);
@@ -76,13 +78,33 @@ export default function Todo({ user }) {
         );
     };
 
-    const RemoveTodo = (id) => {
-        setItems((prev) => prev.filter((it) => it.id !== id));
-    };
-
     const ClearCompleted = () => {
         setItems((prev) => prev.filter((it) => !it.done));
     };
+
+    const EditingToDo = (id, text) => {
+        setEditID(id);
+        setEditTxt(text);
+    };
+
+    const SavedEdit = (id) => {
+        setItems((prev) =>
+            prev.map((it) => (it.id === id ? { ...it, text: editTxt } : it))
+        );
+        setEditID(null);
+        setEditTxt("");
+    };
+
+    const FilteredToDo = items.filter((it) => {
+        if (filter === 'pending') return !it.done;
+        if (filter === 'done') return it.done;
+        return true;
+    });
+
+    // Barra para que el usuario pueda ver el progreso de sus tareas
+    const completedCount = items.filter(item => item.done).length;
+    const totalCount = items.length;
+    const progress = totalCount === 0 ? 0 : Math.round((completedCount / totalCount) * 100);
 
     if (!isLoaded) {
         return <div>Cargando tareas...</div>;
@@ -90,7 +112,20 @@ export default function Todo({ user }) {
 
     return (
         <>
-            <h2>Lista de Tareas Pendientes - {user?.usuario}</h2>
+            <h2>Lista de Tareas - {user?.usuario}</h2>
+
+            {/* Barra de progreso */}
+            {totalCount > 0 && (
+                <div className="progreso__tareas">
+                    <div className="barra__progreso">
+                        <div
+                            className="barra__relleno"
+                            style={{ width: `${progress}%` }}
+                        ></div>
+                    </div>
+                    <span className="txt__barra__tareas">{completedCount} de {totalCount} tareas completadas ({progress}%)</span>
+                </div>
+            )}
 
             <div className="agregar__tareas">
                 <form onSubmit={addTodo} style={{ display: "flex", gap: "0.5rem" }}>
@@ -104,11 +139,10 @@ export default function Todo({ user }) {
                 </form>
             </div>
 
+
             <div className="lista__tareas">
                 <ul className="ListaTarea">
-                    {items.length === 0 && <li>No hay tareas</li>}
-
-                    {items.map((item) => (
+                    {FilteredToDo.map((item) => (
                         <li key={item.id} className="itemsMap">
                             <input
                                 type="checkbox"
@@ -117,34 +151,58 @@ export default function Todo({ user }) {
                                 aria-label={`Marcar "${item.text}"`}
                             />
 
-                            <span
-                                className="textCheckbox"
-                                style={{
-                                    textDecoration: item.done ? "line-through" : "none",
-                                    opacity: item.done ? 0.6 : 1
-                                }}
-                            >
-                                {item.text}
-                            </span>
+                            {editID === item.id ? (
+                                <input
+                                    type="text"
+                                    value={editTxt}
+                                    onChange={(e) => setEditTxt(e.target.value)}
+                                    onBlur={() => SavedEdit(item.id)}
+                                    onKeyDown={(e) => {
+                                        if (e.key === "Enter") {
+                                            SavedEdit(item.id);
+                                        }
+                                    }}
+                                    autoFocus
+                                />
+                            ) : (
+                                <span
+                                    className="textCheckbox"
+                                    style={{
+                                        textDecoration: item.done ? "line-through" : "none",
+                                        opacity: item.done ? 0.6 : 1,
+                                    }}
+                                >
+                                    {item.text}
+                                </span>
+                            )}
+
                             <button
-                                className="borrar__tareas"
-                                onClick={() => RemoveTodo(item.id)}
-                                aria-label="Eliminar"
+                                className="editar__tareas"
+                                onClick={() => EditingToDo(item.id, item.text)}
+                                aria-label="Editar"
                             >
-                                🗑️
+                                ✏️
                             </button>
                         </li>
                     ))}
+
+                    {FilteredToDo.length === 0 && (
+                        <li className="texto-listas">
+                            {filter === 'all' && "No hay tareas"}
+                            {filter === 'pending' && "No hay tareas pendientes"}
+                            {filter === 'done' && "No hay tareas completadas"}
+                        </li>
+                    )}
+
+                    <div className="Filtered-Tasks">
+                        <button onClick={() => setFilter('all')}>Todas</button>
+                        <button onClick={() => setFilter('pending')}>Pendientes</button>
+                        <button onClick={() => setFilter('done')}>Completadas</button>
+                    </div>
                 </ul>
+
             </div>
 
-            {items.length > 0 && (
-                <div className="pendientes">
-                    <button onClick={ClearCompleted}>Borrar Tareas Completadas</button>
-                    <p>
-                    </p>
-                </div>
-            )}
         </>
     );
 }

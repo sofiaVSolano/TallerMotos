@@ -5,7 +5,6 @@
     --muted: #475569;
     --accent: #4f46e5;
     --border: #e2e8f0;
-
     --card-text: #000;
     --card-button-bg: #333;
     --card-button-text: #fff;
@@ -17,12 +16,19 @@
     --card: #111827;
     --muted: #94a3b8;
     --accent: #6366f1;
-    --border: #1f2937;
-
+    --border: #40e748;
     --card-text: #fff;
     --card-button-bg: #ddd;
     --card-button-text: #000;
+}
 
+:root[data-theme='dark'] button:hover {
+    border: 3px inset rgb(6, 197, 72);
+    background: rgb(25, 85, 54);
+    padding: .55rem .9rem;
+    border-radius: .6rem;
+    cursor: pointer;
+    box-shadow: inset 0px 4px 8px rgba(76, 216, 134, 0.5);
 }
 
 html,
@@ -37,6 +43,12 @@ h2 {
     align-items: center;
     justify-content: center;
     margin-left: 80px;
+    font-size: 35px;
+
+}
+
+.texto-listas {
+    margin-left: 200px;
 }
 
 .agregar__tareas {
@@ -47,17 +59,41 @@ h2 {
     margin-left: 100px;
 }
 
-
 .lista__tareas {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    margin-top: 30px;
 }
 
-.borrar__tareas {
-    margin-left: 20px;
-    font-size: 14px;
+.ListaTarea {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
+
+.itemsMap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid var(--border);
+    padding: 10px 15px;
+    border-radius: 10px;
+    margin-left: 100px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.itemsMap:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+
 
 .pendientes {
     display: flex;
@@ -74,13 +110,24 @@ body {
 }
 
 button {
-    border: 2px solid green;
+    border: 3px inset rgb(156, 247, 87);
     background: var(--card);
-    color: var(--fg);
     padding: .55rem .9rem;
     border-radius: .6rem;
     cursor: pointer;
 }
+
+
+
+button:hover {
+    border: 3px inset rgb(6, 197, 72);
+    background: rgb(203, 203, 203);
+    padding: .55rem .9rem;
+    border-radius: .6rem;
+    cursor: pointer;
+    box-shadow: inset 0px 4px 8px rgba(157, 157, 157, 0.5);
+}
+
 
 input {
     background: var(--card);
@@ -94,4 +141,39 @@ input {
     padding: 1.25rem;
     display: grid;
     gap: 1rem;
+}
+
+.Filtered-Tasks {
+    display: flex;
+    gap: 10px;
+    margin-top: 30px;
+    margin-bottom: -55px;
+    margin-left: 130px;
+}
+
+.progreso__tareas {
+    margin: 1rem 0;
+}
+
+.barra__progreso {
+    width: 100%;
+    height: 20px;
+    background-color: #eee;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+    margin-left: 30px;
+}
+
+.barra__relleno {
+    height: 100%;
+    background-color: #4caf50;
+    transition: width 0.3s ease;
+}
+
+.txt__barra__tareas {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 70px;
 }

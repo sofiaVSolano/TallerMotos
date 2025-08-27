@@ -1,33 +1,42 @@
+:root {
+    --bg: #ffffff;
+    --fg: #0f172a;
+    --card: #ffffff;
+    --muted: #475569;
+    --accent: #4f46e5;
+    --border: #e2e8f0;
+    --card-text: #000;
+    --card-button-bg: #28a745;
+    --card-button-text: #fff;
+}
+
+:root[data-theme='dark'] {
+    --bg: #697a9e;
+    --fg: #e5e7eb;
+    --card: #111827;
+    --muted: #94a3b8;
+    --accent: #6366f1;
+    --border: #40e748;
+    --card-text: #fff;
+    --card-button-bg: #28a745;
+    --card-button-text: #fff;
+}
+
+
 .tarjetas-precio {
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
     gap: 25px;
     padding: 40px;
-    background: #242424;
-    flex-wrap: wrap;
-    align-items: center;
-    margin-left: 12 0px;
+    background: var(--bg);
+    margin-left: 12px;
     margin-top: 120px;
 }
 
-.flotar {
-    animation: flotar 5s infinite ease-in-out;
-}
-
-@keyframes flotar {
-
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-8px);
-    }
-}
-
 .tarjeta-precio {
-    background: #fff;
+    background: var(--card);
     border-radius: 12px;
     padding: 25px;
     width: 300px;
@@ -58,12 +67,12 @@
 h3 {
     font-size: 1.3rem;
     margin-bottom: 5px;
-    color: #333;
+    color: var(--fg);
 }
 
 .subtitulo {
     font-size: 0.9rem;
-    color: #777;
+    color: var(--card-text);
     margin-bottom: 15px;
 }
 
@@ -102,27 +111,26 @@ h3 {
     margin-bottom: 8px;
 }
 
-/* Formulario */
+
 .formulario-contenedor {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 3rem;
-    margin-bottom: 3rem;
     width: 100%;
+    margin: 3rem 0;
 }
 
 .formulario h2 {
     text-align: center;
     margin-bottom: 1.5rem;
-    color: #ffffff;
+    color: var(--fg);
 }
 
 .formulario label {
     display: block;
     margin-bottom: 0.3rem;
     font-weight: bold;
-    color: #cfcfcf;
+    color: var(--card-text);
 }
 
 .formulario input,
@@ -135,16 +143,19 @@ h3 {
     border-radius: 8px;
     font-size: 1rem;
     box-shadow: 1px 2px 5px rgba(122, 235, 22, 0.59);
+    box-sizing: border-box;
 }
+
+
 
 .formulario button {
     width: 100%;
     padding: 0.8rem;
     border: none;
-    background: #28a745;
-    color: #fff;
-    font-size: 1rem;
     border-radius: 8px;
+    background: var(--card-button-bg);
+    color: var(--card-button-text);
+    font-size: 1rem;
     cursor: pointer;
     box-shadow: 1px 2px 5px rgba(28, 230, 35, 0.59);
 }
@@ -154,69 +165,20 @@ h3 {
     box-shadow: 1px 2px 7px rgba(144, 255, 125, 0.886);
 }
 
-/* Tema claro usando data-theme */
-[data-theme="ligth"] .tarjetas-precio {
-    background: #f9f9f9;
+
+
+.flotar {
+    animation: flotar 5s infinite ease-in-out;
 }
 
-[data-theme="ligth"] .tarjeta-precio {
-    background: #fff;
-    color: #213547;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.07);
-}
+@keyframes flotar {
 
-[data-theme="ligth"] h3 {
-    color: #213547;
-}
+    0%,
+    100% {
+        transform: translateY(0);
+    }
 
-[data-theme="ligth"] .subtitulo {
-    color: #555;
-}
-
-[data-theme="ligth"] .precio {
-    color: #28a745;
-}
-
-[data-theme="ligth"] .moneda {
-    color: #213547;
-}
-
-[data-theme="ligth"] .periodo {
-    color: #555;
-}
-
-[data-theme="ligth"] .precio-regular {
-    color: #aaa;
-}
-
-[data-theme="ligth"] .lista-incluye li {
-    color: #444;
-}
-
-[data-theme="ligth"] .formulario h2 {
-    color: #213547;
-}
-
-[data-theme="ligth"] .formulario label {
-    color: #213547;
-}
-
-[data-theme="ligth"] .formulario input,
-[data-theme="ligth"] .formulario textarea,
-[data-theme="ligth"] .formulario select {
-    background: #fff;
-    color: #213547;
-    border: 1px solid #bbb;
-    box-shadow: 1px 2px 5px rgba(122, 235, 22, 0.19);
-}
-
-[data-theme="ligth"] .formulario button {
-    background: #28a745;
-    color: #fff;
-    box-shadow: 1px 2px 5px rgba(28, 230, 35, 0.19);
-}
-
-[data-theme="ligth"] .formulario button:hover {
-    background: #2a941e;
-    box-shadow: 1px 2px 7px rgba(144, 255, 125, 0.286)
+    50% {
+        transform: translateY(-8px);
+    }
 }

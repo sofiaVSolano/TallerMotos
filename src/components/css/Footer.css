@@ -1,10 +1,12 @@
 .footer {
   display: flex;
-  background: linear-gradient(135deg, #242424, #242424);
+  background: var(--bg);
   color: #fff;
   padding: 2rem 0;
   font-family: 'Poppins', sans-serif;
   width: 100%;
+  flex-shrink: 0;
+  margin-top: 4rem;
 
 }
 
@@ -47,9 +49,8 @@
   font-weight: bold;
 }
 
-/* Tema claro usando data-theme */
 [data-theme="ligth"] .footer {
-  background: linear-gradient(135deg, #ffffff, #ffffff);
+  background: linear-gradient(135deg, #f9f9f9, #f9f9f9);
   color: #213547;
 }
 

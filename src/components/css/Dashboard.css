@@ -1,0 +1,110 @@
+/* Dashboard.css */
+
+/* Variables de tema */
+:root {
+    --bg: #f8fafc;
+    --fg: #0f172a;
+    --card: #ffffff;
+    --muted: #475569;
+    --accent: #4f46e5;
+    --border: #e2e8f0;
+    --card-text: #000;
+    --card-button-bg: #333;
+    --card-button-text: #fff;
+}
+
+:root[data-theme='dark'] {
+    --bg: #0b1220;
+    --fg: #e5e7eb;
+    --card: #111827;
+    --muted: #94a3b8;
+    --accent: #6366f1;
+    --border: #40e748;
+    --card-text: #fff;
+    --card-button-bg: #ddd;
+    --card-button-text: #000;
+}
+
+
+.saludo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 80px;
+    font-size: 35px;
+}
+
+.Tareas {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 100px;
+}
+
+.usuarioTareas {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    width: 500px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.usuarioTareas h4 {
+    margin: 0 0 10px 0;
+}
+
+.usuarioTareas ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.usuarioTareas li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid var(--border);
+    padding: 10px 15px;
+    border-radius: 10px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.usuarioTareas li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.usuarioTareas input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.borrar__tareas,
+.pendientes button {
+    border: 3px inset rgb(156, 247, 87);
+    background: var(--card);
+    color: var(--fg);
+    padding: 0.55rem 0.9rem;
+    border-radius: 0.6rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.borrar__tareas:hover,
+.pendientes button:hover {
+    border: 3px inset rgb(6, 197, 72);
+    background: rgb(203, 203, 203);
+    box-shadow: inset 0px 4px 8px rgba(157, 157, 157, 0.5);
+}
+
+.pendientes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}

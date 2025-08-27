@@ -7,6 +7,7 @@ import Footer from './components/Footer'
 import './components/css/App.css'
 import Login from './components/Login'
 import Todo from './components/Todo'
+import Dashboard from './components/Dashboard';
 
 function App() {
   const [sesionActiva, setSesionActiva] = useState(false);
@@ -61,6 +62,10 @@ function App() {
         return <Cuerpo user={user} />
       case 'tareas':
         return user ? <Todo user={user} /> : <div>Debes iniciar sesión</div>
+
+      case 'dashboard':
+        return user ? <Dashboard user={user} /> : <div>Debes iniciar sesión</div>;
+
       default:
         return <Cuerpo user={user} />
     }
@@ -75,11 +80,22 @@ function App() {
   }
 
   if (!sesionActiva) {
-    return <Login onlogin={handleLoginSuccess} />
-  }
+    return (
+      <>
+        <Login onlogin={handleLoginSuccess} />
+        <Encabezado
+          user={user}
+          sesionActiva={sesionActiva}
+          onLogout={handleLogout}
+          theme={theme}
+          onToggleTheme={toggleTheme}
+          navegar={navegar}
+        />
+      </>)
 
+  }
   return (
-    <>
+    <div id="root">
       <Encabezado
         user={user}
         sesionActiva={sesionActiva}
@@ -92,8 +108,9 @@ function App() {
         {NavegarPagina()}
       </div>
       <Footer />
-    </>
+    </div>
   );
+
 }
 
 export default App

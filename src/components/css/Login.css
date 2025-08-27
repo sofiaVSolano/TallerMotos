@@ -1,0 +1,114 @@
+:root {
+    --bg: #f8fafc;
+    --fg: #0f172a;
+    --card: #ffffff;
+    --muted: #475569;
+    --accent: #4f46e5;
+    --border: #e2e8f0;
+    --card-text: #000;
+    --card-button-bg: #333;
+    --card-button-text: #fff;
+
+}
+
+body[data-theme='dark'] {
+    --text-color: white;
+    --bg: #0b1220;
+    --fg: #e5e7eb;
+    --card: #111827;
+    --muted: #94a3b8;
+    --accent: #6366f1;
+    --border: #40e748;
+    --card-text: #fff;
+    --card-button-bg: #ddd;
+    --card-button-text: #000;
+}
+
+
+
+.login-card h1,
+.label-usuario {
+    color: var(--text-color);
+}
+
+/* Contenedor principal */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--bg-color);
+    font-family: Arial, sans-serif;
+    margin-left: 570px;
+
+}
+
+/* Tarjeta de login */
+.login-card {
+    background-color: var(--card-color);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+    box-shadow: 3px 3px 5px rgb(240, 144, 144), -3px -3px 5px rgb(195, 255, 193);
+
+}
+
+/* Inputs */
+.login-card input,
+.login-card select {
+    width: 94%;
+    padding: 10px;
+    margin: 6px 0;
+    border: 1px solid var(--input-border);
+    border-radius: 6px;
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    border: 3px inset rgb(237, 237, 237);
+}
+
+.login-card select {
+    width: 100.16%;
+    margin-right: -2px;
+}
+
+/* Botones */
+.login-card button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 12px;
+    background-color: var(--button-bg);
+    color: var(--button-color);
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    border: 3px inset rgb(156, 247, 87);
+
+
+}
+
+.login-card button:hover {
+    background-color: var(--button-hover);
+}
+
+.toggle-register {
+    background-color: transparent;
+    color: var(--button-bg);
+    margin-top: 10px;
+    font-size: 0.9rem;
+    text-decoration: none;
+
+}
+
+.toggle-register:hover {
+    text-decoration: underline;
+}
+
+/* Mensajes de error o confirmación */
+.mensaje {
+    margin-top: 10px;
+    color: var(--mensaje-color);
+    font-weight: bold;
+    font-size: 0.9rem;
+}

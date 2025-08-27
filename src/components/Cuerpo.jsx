@@ -72,7 +72,7 @@ function Cuerpo() {
                     <label>Teléfono:</label>
                     <input type="tel" name="telefono" placeholder="Tu número de contacto" required />
 
-                    <label>Servicio:</label>
+                    <label >Servicio:</label>
                     <select name="servicio" required>
                         <option value="">-- Selecciona un servicio --</option>
                         <option value="basico">Mantenimiento básico</option>

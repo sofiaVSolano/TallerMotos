@@ -1,7 +1,6 @@
 import './css/Encabezado.css';
 
-function Encabezado({ sesionActiva, onLogout, theme, onToggleTheme, navegar }) {
-
+function Encabezado({ sesionActiva, onLogout, theme, onToggleTheme, navegar, user }) {
     return (
         <header className="header">
             <div className="container header__container">
@@ -17,44 +16,59 @@ function Encabezado({ sesionActiva, onLogout, theme, onToggleTheme, navegar }) {
                 </div>
 
                 <div className="header__menu">
-                    <nav id="navbar" className="header__nav collapse">
-                        <ul className="header__elenco">
-                            <li className="header__el">
-                                <a href="#" className="header__link " onClick={() => navegar('inicio')}>Inicio</a>
-                            </li>                            <li className="header__el"><a href="#" className="header__link">Productos</a></li>
-                            <li className="header__el"><a href="#" className="header__link">Ubicación</a></li>
-                            <li className="header__el"><a href="#" className="header__link">Contáctenos</a></li>
-                            <li className="header__el">
-                                <a href="#" className="header__link " onClick={() => navegar('tareas')}>Tareas</a>
-                            </li>
+                    {!sesionActiva ? (
+                        <button
+                            onClick={onToggleTheme}
+                            aria-label="Cambiar Tema"
+                            className="header__tema-btn"
+                        >
+                            {theme === "ligth" ? "🌙" : "☀️"}
+                        </button>
+                    ) : (
+                        // Header completo dentro del login
+                        <nav id="navbar" className="header__nav collapse">
+                            <ul className="header__elenco">
+                                <li className="header__el">
+                                    <a href="#" className="header__link " onClick={() => navegar('inicio')}>Inicio</a>
+                                </li>
+                                <li className="header__el"><a href="#" className="header__link">Productos</a></li>
+                                <li className="header__el"><a href="#" className="header__link">Ubicación</a></li>
+                                <li className="header__el"><a href="#" className="header__link">Contáctenos</a></li>
+                                <li className="header__el">
+                                    <a href="#" className="header__link " onClick={() => navegar('tareas')}>Tareas</a>
+                                </li>
+                                <li className="header__el">
+                                    {user?.tipoUsuario === "Administrador" && (
+                                        <a href="#" className="header__link" onClick={() => navegar('dashboard')}>
+                                            Dashboard
+                                        </a>
+                                    )}
+                                </li>
 
-                            {/* Tema */}
 
-                            <button onClick={onToggleTheme} aria-label='Cambiar Tema' className="header__tema-btn"
-                            >{theme === "ligth" ? "🌙" : "☀️"}</button>
+                                {/* Tema */}
+                                <button
+                                    onClick={onToggleTheme}
+                                    aria-label="Cambiar Tema"
+                                    className="header__tema-btn"
+                                >
+                                    {theme === "ligth" ? "🌙" : "☀️"}
+                                </button>
 
-
-                            <li className="header__el header__usuario">
-                                {sesionActiva ? (
+                                <li className="header__el header__usuario">
                                     <button
                                         onClick={onLogout}
                                         className="header__logout-btn"
                                     >
                                         Cerrar sesión
                                     </button>
-                                ) : (
-                                    <img
-                                        src="/src/assets/usuarioM.png"
-                                        alt="Usuario"
-                                        className="header__usuario-img"
-                                    />
-                                )}
-                            </li>
-                        </ul>
-                    </nav>
+                                </li>
+                            </ul>
+                        </nav>
+                    )}
                 </div>
             </div>
-        </header >
+        </header>
     );
 }
 
